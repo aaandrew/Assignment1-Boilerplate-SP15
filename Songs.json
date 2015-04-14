@@ -1,0 +1,56 @@
+{
+	"songs":[
+		{"titles": [
+			{ "title": "Started From the Bottom"},
+			{ "title": "All Me" }
+		]},
+		{"titles": [
+			{ "title": "Energy" },
+			{ "title": "6God" }
+		]},
+		{"titles": [
+			{ "title": "10 Bands" },
+			{ "title": "6PM in New York" }
+
+		]},
+		{"titles": [
+			{ "title": "Headlines" },
+			{ "title": "HYFR" }
+		]},
+		{"titles": [
+			{ "title": "No Tellin" },
+			{ "title": "From Time" }
+		]},
+		{"titles": [
+			{ "title": "Legend" },
+			{ "title": "You and the 6" },
+			{ "title": "Crew Love" }
+
+		]},
+		{"titles": [
+			{ "title": "Madonna" },
+			{ "title": "Star67" },
+			{ "title": "Now and Forever" },
+			{ "title": "Take Care" },
+			{ "title": "Find Your Love" }
+		]},
+		{"titles": [
+			{ "title": "Know Yourself" },
+			{ "title": "Preach" },
+			{ "title": "Jungle" },
+			{ "title": "The Real Her" },
+			{ "title": "Practice" }
+		]},
+		{"titles": [
+			{ "title": "My Side" },
+			{ "title": "Company" },
+			{ "title": "Hold On, We're Going Home" },
+			{ "title": "Marvin's Room" }
+		]},
+		{"titles": [
+			{ "title": "Furthest Thing"  },
+			{ "title": "Doing it Wrong"  },
+			{ "title": "Shot for Me"  }
+		]}
+	]
+}

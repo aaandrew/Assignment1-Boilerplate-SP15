@@ -2,6 +2,7 @@
 var express = require('express');
 var passport = require('passport');
 var InstagramStrategy = require('passport-instagram').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var http = require('http');
 var path = require('path');
 var handlebars = require('express-handlebars');
@@ -11,6 +12,8 @@ var cookieParser = require('cookie-parser');
 var dotenv = require('dotenv');
 var Instagram = require('instagram-node-lib');
 var mongoose = require('mongoose');
+var graph = require('fbgraph');
+var drake = require('./DrakeAlg');
 var app = express();
 
 //local dependencies
@@ -22,6 +25,9 @@ var INSTAGRAM_CLIENT_ID = process.env.INSTAGRAM_CLIENT_ID;
 var INSTAGRAM_CLIENT_SECRET = process.env.INSTAGRAM_CLIENT_SECRET;
 var INSTAGRAM_CALLBACK_URL = process.env.INSTAGRAM_CALLBACK_URL;
 var INSTAGRAM_ACCESS_TOKEN = "";
+var FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID;
+var FACEBOOK_APP_SECRET = process.env.FACEBOOK_APP_SECRET;
+var FACEBOOK_CALLBACK_URL = process.env.FACEBOOK_CALLBACK_URL;
 Instagram.set('client_id', INSTAGRAM_CLIENT_ID);
 Instagram.set('client_secret', INSTAGRAM_CLIENT_SECRET);
 
@@ -81,6 +87,31 @@ passport.use(new InstagramStrategy({
   }
 ));
 
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: FACEBOOK_CALLBACK_URL,
+    enableProof: false
+  },
+  function(accessToken, refreshToken, profile, done) {
+    graph.setAccessToken(accessToken);
+    graph.setAppSecret(FACEBOOK_APP_SECRET);
+    
+    models.User.findOrCreate({
+      "name": profile.username,
+      "id": profile.id,
+      "access_token": accessToken 
+    }, function(err, user, created) {
+      models.User.findOrCreate({}, function(err, user, created) {
+        process.nextTick(function () {
+          return done(null, profile);
+        });
+      })
+    });
+  }
+));
+
+
 //Configures the Template engine
 app.engine('handlebars', handlebars({defaultLayout: 'layout'}));
 app.set('view engine', 'handlebars');
@@ -123,6 +154,27 @@ app.get('/account', ensureAuthenticated, function(req, res){
   res.render('account', {user: req.user});
 });
 
+app.get('/facebookaccount', ensureAuthenticated, function(req, res){
+  var options = {
+    timeout:  3000,
+    pool: { maxSockets:  Infinity },
+    headers: { connection: "keep-alive" }
+  }
+  var params = { fields: "message", limit: 30 };
+  graph.setOptions(options).get("me/posts", params, function(err, resp) {
+    var data = [];
+    var d = resp['data'];
+    for(var i in d){
+      if(data.length > 30)
+        break;
+      else if(d[i].message)
+        data.push(d[i].message);
+    }
+    var ret = {song: drake.findSong(data)};
+    res.render('facebookaccount', {user:req.user, data:ret});
+  });
+});
+
 app.get('/photos', ensureAuthenticated, function(req, res){
   var query  = models.User.where({ name: req.user.username });
   query.findOne(function (err, user) {
@@ -146,7 +198,6 @@ app.get('/photos', ensureAuthenticated, function(req, res){
     }
   });
 });
-
 
 // GET /auth/instagram
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -175,6 +226,15 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: ['user_posts'] }));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/facebookaccount');
+  });
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
