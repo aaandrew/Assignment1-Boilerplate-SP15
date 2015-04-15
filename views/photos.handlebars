@@ -1,3 +1,19 @@
-{{#each photos}}
-  <img src="{{url}}" class="img-responsive" class="img hashtag-img">
-{{/each}}
+ <div class="igContainer">
+	<div class="titlelabel">
+		<p>drake</p>
+	</div>
+	{{#each photos}}
+	 <!--
+		<p>Author: {{author}}</p>
+	  <img src="{{url}}" class="img-responsive" class="img hashtag-img">
+	  <p>{{caption}}</p>
+	  -->
+	  	<div class="igItem">
+	  		<paper-card enableHover="true" overlayImage="{{url}}" style="width:300px; height:300px;"></paper-card>
+	  		<div class="label">
+	  			<p>{{caption}}</p>
+	  		</div>
+	  	</div>
+	{{/each}}
+</div>
+

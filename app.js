@@ -117,6 +117,8 @@ app.engine('handlebars', handlebars({defaultLayout: 'layout'}));
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use('/assets',  express.static(__dirname + '/assets'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -162,15 +164,18 @@ app.get('/facebookaccount', ensureAuthenticated, function(req, res){
   }
   var params = { fields: "message", limit: 30 };
   graph.setOptions(options).get("me/posts", params, function(err, resp) {
+    var ret = {posts:[]};
     var data = [];
     var d = resp['data'];
     for(var i in d){
-      if(data.length > 30)
-        break;
-      else if(d[i].message)
+      if(d[i].message && d[i].picture){
+        ret.posts.push({'picture': d[i].picture, 'message': d[i].message});
+      }else if(d[i].message){
         data.push(d[i].message);
+        ret.posts.push({'message': d[i].message});
+      }
     }
-    var ret = {song: drake.findSong(data)};
+    ret['song'] = drake.findSong(data);
     res.render('facebookaccount', {user:req.user, data:ret});
   });
 });
@@ -181,7 +186,7 @@ app.get('/photos', ensureAuthenticated, function(req, res){
     if (err) return handleError(err);
     if (user) {
       // doc may be null if no document matched
-      Instagram.users.liked_by_self({
+      Instagram.users.self({
         access_token: user.access_token,
         complete: function(data) {
           //Map will iterate through the returned data obj
@@ -189,6 +194,8 @@ app.get('/photos', ensureAuthenticated, function(req, res){
             //create temporary json object
             tempJSON = {};
             tempJSON.url = item.images.low_resolution.url;
+            tempJSON.caption = item.caption.text;
+            tempJSON.author = (item.caption.from.full_name.length == 0)? item.caption.from_full_name : item.caption.from.username;
             //insert json object into image array
             return tempJSON;
           });
