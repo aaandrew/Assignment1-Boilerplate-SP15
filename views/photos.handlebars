@@ -2,14 +2,18 @@
 	<p>drake x {{user}}</p>
 </div>
 <div class="subtitle">
-	<p>Based on you're recent posts, you're Drake song is: </p>
+	<p>Based on you're recent posts, you're Drake song is:</p>
+	<div id="songid">{{song.song}}</div>
+	<div id="emotionid">{{song.emotion}}</div>
 </div>
 <div class="igContainer">
-	{{#each photos}}
 	<div class="igItem">
+			<paper-card enableHover="true" overlayImage="assets/emotional.jpg" style="width:400px; height:auto;" caption="{{song.text}}" ></paper-card>
+	</div>
+	{{#each photos}}
+		<div class="igItem">
 			<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" ></paper-card>
 		</div>
-	</div>
 	{{/each}}
 </div>
 

@@ -9,7 +9,11 @@ var self = {
 		}
 		var emotionslevel = self.mapEmotions(sum/data.length);
 		var index = parseInt(Math.random() * songs[emotionslevel-1].titles.length);
-		return songs[emotionslevel-1].titles[index].title;
+		var ret = {};
+		ret['song'] = songs[emotionslevel-1].titles[index].title;
+		ret['emotion'] = songs[emotionslevel-1].emotion;
+		ret['text'] = songs[emotionslevel-1].text;
+		return ret;
 	},
 
 	mapEmotions: function(avg){

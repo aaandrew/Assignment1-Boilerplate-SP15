@@ -38,3 +38,26 @@
 	padding: 20px;
 	box-shadow: 0 0 50px rgba(0,0,0,.2), 0 0 1px rgba(0,0,0,.3);
 }
+
+.subtitle{
+	font-family: 'Open Sans', sans-serif;
+	font-size: large;
+	color: black;
+	text-align: center;
+}
+
+#songid{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 4em;
+	font-weight: 500;
+	color: black;
+	font-style: oblique;
+	text-align: center;
+}
+
+#emotionid{
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+	font-style: oblique;
+	text-align: center;
+}

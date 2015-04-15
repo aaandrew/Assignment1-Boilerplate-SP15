@@ -186,6 +186,7 @@ app.get('/photos', ensureAuthenticated, function(req, res){
     if (err) return handleError(err);
     if (user) {
       // doc may be null if no document matched
+      var d = [];
       Instagram.users.self({
         access_token: user.access_token,
         complete: function(data) {
@@ -199,10 +200,12 @@ app.get('/photos', ensureAuthenticated, function(req, res){
             tempJSON.author = (item.caption.from.full_name.length == 0)? item.caption.from_full_name : item.caption.from.username;
             tempJSON.id = id;
             id++;
+            d.push(tempJSON.caption);
             //insert json object into image array
             return tempJSON;
           });
-          res.render('photos', {user:req.user.username, photos: imageArr});
+          var song = drake.findSong(d);
+          res.render('photos', {song: song, user:req.user.username, photos: imageArr});
         }
       }); 
     }
