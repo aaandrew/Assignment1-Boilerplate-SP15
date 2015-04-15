@@ -3,31 +3,37 @@
 	src: url("Drake-Neue-Regular.otf") format("opentype");
 }
 
-p { word-break: break-all }
-
 .igContainer {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	column-count: 1;
+	column-gap: 40px;
+}
 
+.titlelabel {
+	font-family: 'DrakeNeue';
+	font-size: 5em;
+	text-align: center;
 }
 
 .igItem {
-
+	width:25%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em
 }
 
 .label{
 	font-family: 'Open Sans', sans-serif;
 	font-size: small;
 	color: black;
-	max-width: 100px;
-}
-
-.titlelabel {
-	font-family: 'DrakeNeue';
-	font-size: 5em;
 }
 
 .card{
+	column-span: 1;
+	min-width: 4em;
 	margin: 4em auto; 
-	text-align: center; 
 	background: white;
 	padding: 20px;
 	box-shadow: 0 0 50px rgba(0,0,0,.2), 0 0 1px rgba(0,0,0,.3);

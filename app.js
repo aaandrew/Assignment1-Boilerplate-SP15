@@ -202,7 +202,7 @@ app.get('/photos', ensureAuthenticated, function(req, res){
             //insert json object into image array
             return tempJSON;
           });
-          res.render('photos', {photos: imageArr});
+          res.render('photos', {user:req.user.username, photos: imageArr});
         }
       }); 
     }

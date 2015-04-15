@@ -8,8 +8,8 @@
 
     :host {
       display: block;
-      font-family: "Roboto", sans-serif;
-      font-weight: 300;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 200;
     }
 
     #pcard {
@@ -18,10 +18,10 @@
       border-radius:4px;
       color:#000000;
       border:1px solid #F2F2F2;
-      padding:0px;
+      padding:10px;
+      padding-top: 16px;
       text-align:left;
-      width: 100%;
-      height: 100%;
+      opacity: 1;
     }
 
     #shaded {
@@ -41,13 +41,16 @@
     #image {
       -webkit-user-select: none;
       display: block;
-      position: absolute;
       padding:0;
-      margin:0;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left :0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #captionText{
+      width: auto;
+      height: auto;
+      vertical-align: text-bottom;
+      margin-left: 1em;
     }
 
     paper-ripple {
@@ -78,13 +81,25 @@
       -webkit-animation: removeOverlay 0.2s ease-out 1 forwards;
     }
 
+    hr {
+      position: relative;
+      height: 1px;
+      border: none;
+      width: 95%;
+      background-color: black;
+      opacity: 0.15;
+      margin-top: 15px;
+    }
+
   </style>
   
     <paper-shadow z="{{zdepth}}" id="pcard" animated="{{animated}}"
-    on-mouseover="{{hovered}}" on-mouseout="{{unHovered}}">      
-      <img id="image" src="{{overlayImage}}">      
-      <template if="{{!enableOverlay}}">
+    on-mouseover="{{hovered}}" on-mouseout="{{unHovered}}"> 
+      <template if="{{!enableOverlay}}">     
         <paper-ripple class="recenteringTouch"></paper-ripple>
+        <img id="image" src="{{overlayImage}}" on-mouseover="{{imgHovered}}" on-mouseout="{{imgUnhovered}}"> 
+        <hr>
+        <div id="captionText">{{caption}}</div>
       </template>
       <content></content>
     </paper-shadow>
@@ -140,7 +155,8 @@
        * @type string
        * @default ""
        */
-      overlayImage: ""
+      overlayImage: "",
+      caption: ""
     },
     
      /**
