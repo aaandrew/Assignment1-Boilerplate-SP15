@@ -3,54 +3,82 @@
 		{"titles": [
 			{ "title": "Started From the Bottom"},
 			{ "title": "All Me" }
-		]},
+		],
+		"text": "You started from the bottom, and now you're here.",
+		"emotion": "You have no emotions! Congratulations!"
+		},
 		{"titles": [
 			{ "title": "Energy" },
 			{ "title": "6God" }
-		]},
+		],
+		"text": "You have a lot of enemies... Oh wait, I meant energy.",
+		"emotion": "You are great at hiding your emotions!"
+		},
 		{"titles": [
 			{ "title": "10 Bands" },
 			{ "title": "6PM in New York" }
-
-		]},
+		],
+		"text": "You get emotional, but only if there are bands involved, or it's 6PM.",
+		"emotion": "You're wasting your relationship with a relationship."
+		},
 		{"titles": [
 			{ "title": "Headlines" },
 			{ "title": "HYFR" }
-		]},
+		],
+		"text": "You make all the headlines, but are still trying to figure out the square root of 69.",
+		"emotion": "You're the type to go to the doctor when you have a broken heart."
+		},
 		{"titles": [
 			{ "title": "No Tellin" },
 			{ "title": "From Time" }
-		]},
+		],
+		"text": "You get emotional, but that's from time to time.",
+		"emotion": "All these dictionaries, but you still couldn't keep your word."
+		},
 		{"titles": [
 			{ "title": "Legend" },
 			{ "title": "You and the 6" },
 			{ "title": "Crew Love" }
-
-		]},
+		],
+		"text": "If you die, you are a legend.",
+		"emotion": "All these coins, but you stil couldn't change."
+		},
 		{"titles": [
 			{ "title": "Madonna" },
 			{ "title": "Star67" },
 			{ "title": "Now and Forever" },
 			{ "title": "Take Care" },
 			{ "title": "Find Your Love" }
-		]},
+		],
+		"text": "Take care and find your love.",
+		"emotion": "All these games and you decided to play me."
+		},
 		{"titles": [
 			{ "title": "Know Yourself" },
 			{ "title": "Preach" },
 			{ "title": "Jungle" },
 			{ "title": "The Real Her" },
 			{ "title": "Practice" }
-		]},
+		],
+		"text": "Preach, know yourself, and run through the six with your woes.",
+		"emotion": "Call me crazy... At least you're calling."
+		},
 		{"titles": [
 			{ "title": "My Side" },
 			{ "title": "Company" },
 			{ "title": "Hold On, We're Going Home" },
 			{ "title": "Marvin's Room" }
-		]},
+		],
+		"text": "You need some company. Hold on.",
+		"emotion": "No strings attached and you still got tied up in that."
+		},
 		{"titles": [
 			{ "title": "Furthest Thing"  },
 			{ "title": "Doing it Wrong"  },
 			{ "title": "Shot for Me"  }
-		]}
+		],
+		"text": "When a good thing goes bad, it's not the end of the world.",
+		"emotion": "You cry yourself to sleep."
+		}
 	]
 }
