@@ -3,6 +3,8 @@
 	src: url("Drake-Neue-Regular.otf") format("opentype");
 }
 
+p { word-break: break-all }
+
 .igContainer {
   display: flex;
   flex-wrap: wrap;
@@ -13,16 +15,25 @@
 
 .igItem {
   max-width: 50%;
+  display: -webkit-box;
 }
 
 .label{
 	font-family: 'Open Sans', sans-serif;
 	font-size: small;
 	color: black;
-	word-break: break-all;
+	max-width: 100px;
 }
 
 .titlelabel {
 	font-family: 'DrakeNeue';
 	font-size: 5em;
+}
+
+.card{
+	margin: 4em auto; 
+	text-align: center; 
+	background: white;
+	padding: 20px;
+	box-shadow: 0 0 50px rgba(0,0,0,.2), 0 0 1px rgba(0,0,0,.3);
 }

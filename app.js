@@ -190,12 +190,15 @@ app.get('/photos', ensureAuthenticated, function(req, res){
         access_token: user.access_token,
         complete: function(data) {
           //Map will iterate through the returned data obj
+          var id = 0;
           var imageArr = data.map(function(item) {
             //create temporary json object
             tempJSON = {};
             tempJSON.url = item.images.low_resolution.url;
             tempJSON.caption = item.caption.text;
             tempJSON.author = (item.caption.from.full_name.length == 0)? item.caption.from_full_name : item.caption.from.username;
+            tempJSON.id = id;
+            id++;
             //insert json object into image array
             return tempJSON;
           });
@@ -226,7 +229,7 @@ app.get('/auth/instagram',
 app.get('/auth/instagram/callback', 
   passport.authenticate('instagram', { failureRedirect: '/login'}),
   function(req, res) {
-    res.redirect('/account');
+    res.redirect('/photos');
   });
 
 app.get('/logout', function(req, res){

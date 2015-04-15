@@ -9,9 +9,11 @@
 	  <p>{{caption}}</p>
 	  -->
 	  	<div class="igItem">
-	  		<paper-card enableHover="true" overlayImage="{{url}}" style="width:300px; height:300px;"></paper-card>
-	  		<div class="label">
-	  			<p>{{caption}}</p>
+	  		<paper-card enableHover="true" overlayImage="{{url}}" style="width:300px; height:300px;" onmouseover="onMouseOver(this)" onmouseout="onMouseLeave(this)" id="card_{{id}}"></paper-card>
+	  		<div class="label" id="label_{{id}}" style="visibility:hidden">
+	  			<div class="card">
+	  				<p>{{caption}}</p>
+	  			</div>
 	  		</div>
 	  	</div>
 	{{/each}}
