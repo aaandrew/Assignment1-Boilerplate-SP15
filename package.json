@@ -4,7 +4,8 @@
   "author": "Alex Yang, Brian Soe, Purvi Desai",
   "description": "Assignment 1 for COGS 121",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "bower install"
   },
   "dependencies": {
     "body-parser": "1.12.2",

@@ -6,16 +6,11 @@
 p { word-break: break-all }
 
 .igContainer {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
 }
 
 .igItem {
-  max-width: 50%;
-  display: -webkit-box;
+
 }
 
 .label{
