@@ -12,12 +12,11 @@
 		<div class="igContainer">
 			{{#each data.posts}}
 				<div class="igItem" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="{{emotion}}">
-					<p>aaaa{{picture}}</p>
 					{{#if picture}}
-						<paper-card enableHover="true" overlayImage="{{picture}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{message}}" author={{user.displayName}}></paper-card>
+						<paper-card enableHover="true" overlayImage="{{picture}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{message}}" author={{author}}></paper-card>
 					{{else}}
 						<div class="fbmessage">
-							<paper-message enableHover="true" style="width:350px; height:auto;" id="card_{{id}}" caption="{{message}}" author="{{user.displayName}}"></paper-message>
+							<paper-message enableHover="true" style="width:350px; height:auto;" id="card_{{id}}" caption="{{message}}" author="{{author}}"></paper-message>
 						</div>
 					{{/if}}
 				</div>
@@ -25,30 +24,3 @@
 		</div>
 	</div>
 </div>
-
-
-
-{{!-- <div class="titlelabel">	
-	<p>drake x {{user.displayName}}</p>
-</div>
-<div class="subtitle">
-	<p>Based on your recent posts, the Drake song that best suits you is</p>
-	<div id="songid">{{data.song}}</div>
-	<div id="emotionid">{{data.emotion}}</div>
-</div>
-
-<div class="igContainer">
-	<div class="igItem">
-			<paper-card enableHover="true" overlayImage="assets/emotional.jpg" style="width:400px; height:auto;" caption="{{song.text}}" ></paper-card>
-	</div>
-	{{#each photos}}
-		<div class="igItem">
-			<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" ></paper-card>
-		</div>
-	{{/each}}
-</div>
-
-{{#each data.posts}}
-  <img src="{{picture}}" class="img-responsive" class="img hashtag-img">
-  <p>{{message}}</p>
-{{/each}} --}}

@@ -162,19 +162,18 @@ app.get('/facebookaccount', ensureAuthenticated, function(req, res){
     pool: { maxSockets:  Infinity },
     headers: { connection: "keep-alive" }
   }
-  var params = { fields: "message", limit: 30 };
+  var params = { fields: "message,from,full_picture", limit: 30 };
   graph.setOptions(options).get("me/feed", params, function(err, resp) {
     var ret = {posts:[]};
     var data = [];
     var d = resp['data'];
-    console.log("dddd", d);
     var emotions = drake.getEmotions();
     for(var i in d){
-      console.log('swerver',d[i]);
-      if(d[i].message && d[i].picture){
+      if(d[i].message && d[i].full_picture){
         ret.posts.push({
-          'picture': d[i].picture,
+          'picture': d[i].full_picture,
           'message': d[i].message,
+          'author': d[i].from.name,
           'emotion': emotions[i],
           'id': i
         });
@@ -183,6 +182,7 @@ app.get('/facebookaccount', ensureAuthenticated, function(req, res){
         ret.posts.push({
           'message': d[i].message,
           'emotion': emotions[i],
+          'author': d[i].from.name,
           'id': i
         });
       }

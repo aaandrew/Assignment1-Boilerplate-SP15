@@ -51,7 +51,8 @@
 }
 
 .igContainer {
-	margin-right: 40%
+	margin-right: 40%;
+	overflow-wrap: break-word;
 }
 
 .titlelabel {
