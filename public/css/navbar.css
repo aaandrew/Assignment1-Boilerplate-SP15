@@ -20,6 +20,7 @@ body {
   font-family: Helvetica, Arial, Tahoma, sans-serif;
   font-size: 62.5%;
   color: #515151;
+  background-color: #e9eaed;
 }
 
 br { display: block; line-height: 1.6em; } 

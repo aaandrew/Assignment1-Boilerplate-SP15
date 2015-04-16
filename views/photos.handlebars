@@ -1,22 +1,18 @@
 <div id="global">
 	<div id="mainContainer">
-		<div class="titlelabel">	
-			<p></p>
+		<div class="titlelabel">
 		</div>
 		<div class="subtitle">
 			<div id="songid">
-				<div id="songheader">{{user}}, based on your feed the Drake song that best suits you is...</div>
+				<div id="songheader"><span id="spanheader">{{user}}</span> based on your feed you match the song...</div>
 				<div id="songtitle">{{song.song}}</div>
-				<img id="drakeimg" src="assets/emotional.jpg" >
+				<img id="drakeimg" src="assets/emotional.jpg" data-toggle="tooltip" data-placement="right" title="{{song.text}}">
 			</div>
 		</div>
 		<div class="igContainer">
 			{{#each photos}}
-				<div class="igItem">
-					<span>
-						<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" author={{author}}></paper-card>
-						<div id="sideItem">Hello</div>
-					</span>
+				<div class="igItem" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="{{emotion}}">
+					<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" author={{author}}></paper-card>
 				</div>
 			{{/each}}
 		</div>

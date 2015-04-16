@@ -9,3 +9,8 @@ function onMouseLeave(element){
 	var label = "label_" + id.split("_")[1]
   //document.getElementById(label).style.visibility = "hidden";
 }
+
+$(document).ready(function() {
+	$('.igItem').popover();
+	$('#drakeimg').tooltip();
+});

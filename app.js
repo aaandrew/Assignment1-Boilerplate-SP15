@@ -176,7 +176,7 @@ app.get('/facebookaccount', ensureAuthenticated, function(req, res){
       }
     }
     ret['song'] = drake.findSong(data).toLowerCase();
-    console.log("swerve", ret['song']);
+    //console.log("swerve", ret['song']);
     res.render('facebookaccount', {user:req.user, data:ret});
   });
 });
@@ -193,6 +193,7 @@ app.get('/photos', ensureAuthenticated, function(req, res){
         complete: function(data) {
           //Map will iterate through the returned data obj
           var id = 0;
+          var emotions = drake.getEmotions();
           var imageArr = data.map(function(item) {
             //create temporary json object
             tempJSON = {};
@@ -200,6 +201,7 @@ app.get('/photos', ensureAuthenticated, function(req, res){
             tempJSON.caption = item.caption.text;
             tempJSON.author = (item.caption.from.full_name.length == 0)? item.caption.from_full_name : item.caption.from.username;
             tempJSON.id = id;
+            tempJSON.emotion = emotions[id];
             id++;
             d.push(tempJSON.caption);
             //insert json object into image array

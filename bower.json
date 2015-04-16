@@ -6,7 +6,8 @@
   "dependencies": {
     "paper-shadow": "Polymer/paper-shadow#master",
     "paper-ripple": "Polymer/paper-ripple#master",
-    "polymer": "~0.5.0"
+    "polymer": "~0.5.0",
+    "bootstrap-social": "~4.8.0"
   },
   "resolutions": {
     "core-component-page": "^0.5",
