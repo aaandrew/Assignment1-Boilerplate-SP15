@@ -18,16 +18,45 @@
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
       <link rel="stylesheet" type="text/css" href="assets/fb.css">
       <link rel="stylesheet" type="text/css" href="assets/ig.css">
+      <link rel="stylesheet" type="text/css" media="all" href="css/navbar.css">
 
       <script src="https://code.jquery.com/jquery.js"></script>
       <script src="js/bootstrap.js"></script>
       <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
       <script src="js/eventhandler.js"></script>
+      <script type="text/javascript" src="js/headroom.min.js"></script>
       <link rel="import" href="components/paper-card.html">
 </head>
 
 <body>
-    {{{body}}}    
+  <header id="header" class="header fixed">
+    <div class="wrap">
+      <div class="clearfix" style="width:100%;">
+        <a href="/"><div id="logo">Drakify</div></a>
+
+        <ul id="navmenu">
+          <li><a href="/auth/facebook">Facebook</a></li>
+          <li><a href="/auth/instagram">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+    {{{body}}}
+    <script type="text/javascript">
+      var header = document.querySelector("#header");
+      new Headroom(header, {
+        tolerance: {
+          down : 2,
+          up : 5
+        },
+        offset : 100,
+        classes: {
+          initial: "slide",
+          pinned: "slide--reset",
+          unpinned: "slide--up"
+        }
+      }).init();
+    </script>
 </body>
 </html>
 

@@ -8,7 +8,6 @@
 
     :host {
       display: block;
-      font-family: 'Open Sans', sans-serif;
       font-weight: 200;
     }
 
@@ -50,6 +49,16 @@
       width: auto;
       height: auto;
       vertical-align: text-bottom;
+      margin-left: 1em;
+      font-size:12px;
+      font-family: 'Helvetica';
+      line-height: 1.7em;
+      color: #333;
+    }
+
+    #authorText{
+      color: #4e5f81;
+      font-size:18px;
       margin-left: 1em;
     }
 
@@ -99,6 +108,7 @@
         <paper-ripple class="recenteringTouch"></paper-ripple>
         <img id="image" src="{{overlayImage}}" on-mouseover="{{imgHovered}}" on-mouseout="{{imgUnhovered}}"> 
         <hr>
+        <div id="authorText">{{author}}</div>
         <div id="captionText">{{caption}}</div>
       </template>
       <content></content>
@@ -156,7 +166,8 @@
        * @default ""
        */
       overlayImage: "",
-      caption: ""
+      caption: "",
+      author:""
     },
     
      /**

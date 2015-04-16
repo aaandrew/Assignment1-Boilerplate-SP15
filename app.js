@@ -175,7 +175,8 @@ app.get('/facebookaccount', ensureAuthenticated, function(req, res){
         ret.posts.push({'message': d[i].message});
       }
     }
-    ret['song'] = drake.findSong(data);
+    ret['song'] = drake.findSong(data).toLowerCase();
+    console.log("swerve", ret['song']);
     res.render('facebookaccount', {user:req.user, data:ret});
   });
 });
@@ -205,6 +206,7 @@ app.get('/photos', ensureAuthenticated, function(req, res){
             return tempJSON;
           });
           var song = drake.findSong(d);
+          song['song'] = song['song'].toLowerCase();
           res.render('photos', {song: song, user:req.user.username, photos: imageArr});
         }
       }); 

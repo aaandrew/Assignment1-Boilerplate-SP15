@@ -1,19 +1,22 @@
-<div class="titlelabel">	
-	<p>drake x {{user}}</p>
-</div>
-<div class="subtitle">
-	<p>Based on you're recent posts, you're Drake song is:</p>
-	<div id="songid">{{song.song}}</div>
-	<div id="emotionid">{{song.emotion}}</div>
-</div>
-<div class="igContainer">
-	<div class="igItem">
-			<paper-card enableHover="true" overlayImage="assets/emotional.jpg" style="width:400px; height:auto;" caption="{{song.text}}" ></paper-card>
-	</div>
-	{{#each photos}}
-		<div class="igItem">
-			<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" ></paper-card>
+<div id="global">
+	<div id="mainContainer">
+		<div class="titlelabel">	
+			<p></p>
 		</div>
-	{{/each}}
+		<div class="subtitle">
+			<div id="songid">
+				<div id="songheader">{{user}}, based on your feed the Drake song that best suits you is...</div>
+				<div id="songtitle">{{song.song}}</div>
+				<img id="drakeimg" src="assets/emotional.jpg" >
+			</div>
+		</div>
+		<div class="igContainer">
+			{{#each photos}}
+				<div class="igItem">
+					<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" author={{author}}></paper-card>
+				</div>
+			{{/each}}
+		</div>
+	</div>
 </div>
 

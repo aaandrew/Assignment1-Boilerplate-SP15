@@ -1,8 +1,23 @@
-hello accounts
-<p>ID: {{user.id}}</p>
-<p>Name:{{user.displayName}}</p>
-<p>Gender: {{user.gender}}</p>
-<p>Song: {{data.song}} </p>
+<div class="titlelabel">	
+	<p>drake x {{user.displayName}}</p>
+</div>
+<div class="subtitle">
+	<p>Based on your recent posts, the Drake song that best suits you is</p>
+	<div id="songid">{{data.song}}</div>
+	<div id="emotionid">{{data.emotion}}</div>
+</div>
+
+<div class="igContainer">
+	<div class="igItem">
+			<paper-card enableHover="true" overlayImage="assets/emotional.jpg" style="width:400px; height:auto;" caption="{{song.text}}" ></paper-card>
+	</div>
+	{{#each photos}}
+		<div class="igItem">
+			<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" ></paper-card>
+		</div>
+	{{/each}}
+</div>
+
 {{#each data.posts}}
   <img src="{{picture}}" class="img-responsive" class="img hashtag-img">
   <p>{{message}}</p>

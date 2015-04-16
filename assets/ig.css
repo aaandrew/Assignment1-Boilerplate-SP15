@@ -3,17 +3,30 @@
 	src: url("Drake-Neue-Regular.otf") format("opentype");
 }
 
+#global{
+	background-color: #e9eaed;
+	padding-top: 10px;
+}
+
+#mainContainer{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 13em;
+  border-radius: 3px;
+  width: 650px;
+  max-width: 940px;
+  background-color: white;
+  padding: 1.5em;
+  padding-bottom: 5em;
+}
+
 .igContainer {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	column-count: 1;
-	column-gap: 40px;
+	margin-right: 40%
 }
 
 .titlelabel {
 	font-family: 'DrakeNeue';
-	font-size: 5em;
+	font-size: 3.5em;
 	text-align: center;
 }
 
@@ -40,19 +53,35 @@
 }
 
 .subtitle{
-	font-family: 'Open Sans', sans-serif;
-	font-size: large;
+	font-family: 'Open Sans', sans-serif !important;
 	color: black;
 	text-align: center;
 }
 
 #songid{
-	font-family: 'Open Sans', sans-serif;
-	font-size: 4em;
-	font-weight: 500;
-	color: black;
 	font-style: oblique;
 	text-align: center;
+	background-color: #ddd;
+}
+
+#songtitle{
+	color: #4e5f81;
+	font-family: 'DrakeNeue', sans-serif;
+	font-size: 3em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#songheader{
+	background-color: white;
+	color: #4e5f81;
+	font-size: 17px;
+	font-family: 'Open Sans', sans-serif;
+	padding-bottom: 10px;
+}
+
+#drakeimg{
+	
 }
 
 #emotionid{
@@ -61,3 +90,4 @@
 	font-style: oblique;
 	text-align: center;
 }
+
