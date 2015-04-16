@@ -13,7 +13,10 @@
 		<div class="igContainer">
 			{{#each photos}}
 				<div class="igItem">
-					<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" author={{author}}></paper-card>
+					<span>
+						<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" author={{author}}></paper-card>
+						<div id="sideItem">Hello</div>
+					</span>
 				</div>
 			{{/each}}
 		</div>
