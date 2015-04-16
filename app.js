@@ -163,21 +163,33 @@ app.get('/facebookaccount', ensureAuthenticated, function(req, res){
     headers: { connection: "keep-alive" }
   }
   var params = { fields: "message", limit: 30 };
-  graph.setOptions(options).get("me/posts", params, function(err, resp) {
+  graph.setOptions(options).get("me/feed", params, function(err, resp) {
     var ret = {posts:[]};
     var data = [];
     var d = resp['data'];
+    console.log("dddd", d);
+    var emotions = drake.getEmotions();
     for(var i in d){
+      console.log('swerver',d[i]);
       if(d[i].message && d[i].picture){
-        ret.posts.push({'picture': d[i].picture, 'message': d[i].message});
+        ret.posts.push({
+          'picture': d[i].picture,
+          'message': d[i].message,
+          'emotion': emotions[i],
+          'id': i
+        });
       }else if(d[i].message){
         data.push(d[i].message);
-        ret.posts.push({'message': d[i].message});
+        ret.posts.push({
+          'message': d[i].message,
+          'emotion': emotions[i],
+          'id': i
+        });
       }
     }
-    ret['song'] = drake.findSong(data).toLowerCase();
-    //console.log("swerve", ret['song']);
-    res.render('facebookaccount', {user:req.user, data:ret});
+    var song = drake.findSong(data);
+    song['song'] = song['song'].toLowerCase();
+    res.render('facebookaccount', {song: song, user:req.user, data:ret});
   });
 });
 
@@ -245,7 +257,7 @@ app.get('/logout', function(req, res){
 });
 
 app.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: ['user_posts'] }));
+  passport.authenticate('facebook', { scope: ['user_posts', 'user_photos'] }));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),

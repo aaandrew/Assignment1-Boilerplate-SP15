@@ -1,0 +1,190 @@
+<!-- NOTE: THIS FILE USES THE WET DESIGN PATTERN -->
+<!-- NOTE: THIS FILE USES THE WET DESIGN PATTERN -->
+<!-- NOTE: THIS FILE USES THE WET DESIGN PATTERN -->
+<!-- NOTE: THIS FILE USES THE WET DESIGN PATTERN -->
+<!-- NOTE: THIS FILE USES THE WET DESIGN PATTERN -->
+
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+
+<polymer-element name="paper-message">
+<template>
+
+  <style>
+
+    :host {
+      display: block;
+      font-weight: 500;
+    }
+
+    #pcard {
+      margin: 0;
+      background-color:#FFFFFF;
+      border-radius:4px;
+      color:#000000;
+      border:1px solid #F2F2F2;
+      padding:10px;
+      padding-top: 16px;
+      text-align:left;
+      opacity: 1;
+    }
+
+    #shaded {
+      opacity: 0;
+      display: block;
+      border-radius:4px;
+      position: absolute;
+      padding:0;
+      margin:0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left :0;
+      background: rgba(0,0,0,0.1);
+    }
+
+    #captionText{
+      width: auto;
+      height: auto;
+      vertical-align: text-bottom;
+      margin-left: 1em;
+      font-size:18px;
+      font-family: 'Helvetica';
+      line-height: 1.7em;
+      color: #333;
+    }
+
+    #authorText{
+      color: #4e5f81;
+      font-size:25px;
+      margin-left: 1em;
+    }
+
+    paper-ripple {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
+    @-webkit-keyframes addOverlay {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes removeOverlay {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    .overlay-in {
+      -webkit-animation: addOverlay 0.2s ease-in 1 forwards;
+    }
+    .overlay-out {
+      -webkit-animation: removeOverlay 0.2s ease-out 1 forwards;
+    }
+
+    hr {
+      position: relative;
+      height: 1px;
+      border: none;
+      width: 95%;
+      background-color: black;
+      opacity: 0.15;
+      margin-top: 15px;
+    }
+
+  </style>
+  
+    <paper-shadow z="{{zdepth}}" id="pcard" animated="{{animated}}"
+    on-mouseover="{{hovered}}" on-mouseout="{{unHovered}}"> 
+      <template if="{{!enableOverlay}}">     
+        <paper-ripple class="recenteringTouch"></paper-ripple>
+        <div id="authorText">{{author}}</div>
+        <hr>
+        <div id="captionText">{{caption}}</div>
+      </template>
+      <content></content>
+    </paper-shadow>
+  
+
+</template>
+<script>
+
+  Polymer('paper-message', {
+
+    publish: {
+
+      /**
+       * Amount of shadow of the card.
+       *
+       * @attribute zdepth
+       * @type int
+       * @default 1
+       */
+      zdepth: 1,
+
+       /**
+       * Increase shadow by 1 on mouse hover, if possible.
+       *
+       * @attribute enableHover
+       * @type boolean
+       * @default false
+       */
+      enableHover: false,
+
+      /**
+       * Animate the shadow increase/decrease from hovering
+       *
+       * @attribute animated
+       * @type boolean
+       * @default true
+       */
+      animated: true,
+
+      /**
+       * Enable an animated overlay on hover
+       *
+       * @attribute enableOverlay
+       * @type boolean
+       * @default false
+       */
+      enableOverlay: false,
+
+      caption: "",
+      author:""
+    },
+    
+     /**
+     * On-hover function
+     * @method hovered
+     */
+    hovered: function() {
+      if (this.enableOverlay) {
+        this.$.shaded.className = 'overlay-in';
+      }
+      if( this.enableHover && this.zdepth < 5 ) {
+          this.$.pcard.setZ(this.zdepth + 1);
+      }
+    },
+
+    /**
+     * On-unhover function
+     * @method unHovered
+     */
+    unHovered: function() {
+      if ( this.enableOverlay) {
+        this.$.shaded.className = 'overlay-out';
+      } 
+      if ( this.enableHover && this.zdepth > 0 ) {
+        this.$.pcard.setZ(this.zdepth - 1);
+      }
+    }
+});
+
+</script>
+</polymer-element>
