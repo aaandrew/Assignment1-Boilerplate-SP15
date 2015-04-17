@@ -11,6 +11,6 @@ function onMouseLeave(element){
 }
 
 $(document).ready(function() {
-	$('.igItem').popover();
+	$('.igItem').tooltip();
 	$('#drakeimg').tooltip();
 });

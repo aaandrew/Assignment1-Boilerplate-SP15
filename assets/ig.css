@@ -150,6 +150,14 @@
 	margin-left: 1em;
 }
 
+.igItem + .tooltip > .tooltip-inner {
+	margin-left: 14.5em;
+}
+
+.igItem + .tooltip > .tooltip-arrow { 
+	margin-left: 14.5em;
+}
+
 .tooltip.right .tooltip-arrow {
 	border-right-color: #4e5f81;
 }
