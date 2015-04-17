@@ -96,9 +96,8 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     graph.setAccessToken(accessToken);
     graph.setAppSecret(FACEBOOK_APP_SECRET);
-    
     models.User.findOrCreate({
-      "name": profile.username,
+      "name": profile.displayName,
       "id": profile.id,
       "access_token": accessToken 
     }, function(err, user, created) {
