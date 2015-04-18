@@ -102,16 +102,29 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     graph.setAccessToken(accessToken);
     graph.setAppSecret(FACEBOOK_APP_SECRET);
-    models.User.findOrCreate({
-      "name": profile.displayName,
+    models.User.findOne({
       "id": profile.id,
-      "access_token": accessToken 
-    }, function(err, user, created) {
-      models.User.findOrCreate({}, function(err, user, created) {
-        process.nextTick(function () {
-          return done(null, profile);
+    }, function(err, user) {
+      if(user){
+        user.access_token = accessToken;
+        user.save(function(err){
+          if(err) throw err;
+          process.nextTick(function () {
+            return done(null, profile);
+          });
         });
-      })
+      }else{
+        var instance = new models.User();
+        instance.id = profile.id;
+        instance.access_token = accessToken;
+        instance.name = profile.displayName;
+        instance.save(function (err) {
+          if(err) throw err;
+          process.nextTick(function () {
+            return done(null, profile);
+          });
+        });
+      }
     });
   }
 ));
