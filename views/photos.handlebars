@@ -11,8 +11,8 @@
 		</div>
 		<div class="igContainer">
 			{{#each photos}}
-				<div class="igItem" data-placement="right" title="{{emotion}}">
-					<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" author={{author}}></paper-card>
+				<div class="igItem">
+					<paper-card enableHover="true" overlayImage="{{url}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{caption}}" author={{author}} class="papermessage" data-toggle="tooltip" data-placement="right" title="{{emotion}}"></paper-card>
 				</div>
 			{{/each}}
 		</div>

@@ -11,12 +11,12 @@
 		</div>
 		<div class="igContainer">
 			{{#each data.posts}}
-				<div class="igItem" data-toggle="tooltip" data-placement="right" title="{{emotion}}">
+				<div class="igItem">
 					{{#if picture}}
-						<paper-card enableHover="true" overlayImage="{{picture}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{message}}" author={{author}}></paper-card>
+						<paper-card enableHover="true" overlayImage="{{picture}}" style="width:350px; height:auto;" id="card_{{id}}" caption="{{message}}" author="{{author}}" class="papermessage" data-toggle="tooltip" data-placement="right" title="{{emotion}}"></paper-card>
 					{{else}}
 						<div class="fbmessage">
-							<paper-message enableHover="true" style="width:350px; height:auto;" id="card_{{id}}" caption="{{message}}" author="{{author}}"></paper-message>
+							<paper-message enableHover="true" style="width:350px; height:auto;" id="card_{{id}}" caption="{{message}}" author="{{author}}" class="papermessage" data-toggle="tooltip" data-placement="right" title="{{emotion}}"></paper-message>
 						</div>
 					{{/if}}
 				</div>
