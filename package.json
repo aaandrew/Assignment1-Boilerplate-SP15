@@ -2,7 +2,7 @@
   "name": "mywebapp",
   "version": "0.0.1",
   "author": "Alex Yang, Brian Soe, Purvi Desai",
-  "description": "Assignment 1 for COGS 121",
+  "description": "Drakify",
   "scripts": {
     "start": "node app.js",
     "postinstall": "bower install"

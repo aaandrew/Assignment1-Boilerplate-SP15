@@ -170,3 +170,31 @@
 /* Facebook */
 .fbmessage{
 }
+
+#privacypolicylink{
+	position: fixed;
+	bottom: 0; 
+	margin: 12px;
+	font-size: 1em;
+}
+
+#highlowwrapper{
+	margin-top: 6em;
+}
+
+#highkey{
+	font-style: oblique;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+#lowkey{
+  max-width: 60%;
+  margin-top: 10px;
+}
+
+.ppwrapper{
+	margin-top: 6em;
+  margin-left: 30%;
+  text-align: left;
+}

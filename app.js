@@ -174,6 +174,10 @@ app.get('/account', ensureAuthenticated, function(req, res){
   res.render('account', {user: req.user});
 });
 
+app.get('/privacypolicy', function(req, res){
+  res.render('privacypolicy');
+});
+
 app.get('/facebookaccount', ensureAuthenticated, function(req, res){
   var options = {
     timeout:  3000,
