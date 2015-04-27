@@ -35,13 +35,12 @@
 /* Instagram */
 #global{
 	background-color: #e9eaed;
-	padding-top: 10px;
 }
 
 #mainContainer{
   margin-left: auto;
   margin-right: auto;
-  margin-top: 11em;
+  margin-top: 9em;
   border-radius: 3px;
   width: 650px;
   max-width: 940px;
