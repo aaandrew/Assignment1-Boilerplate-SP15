@@ -279,7 +279,7 @@ app.get('/logout', function(req, res){
 });
 
 app.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: ['user_posts', 'user_photos'] }));
+  passport.authenticate('facebook', { scope: ['user_posts'] }));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
